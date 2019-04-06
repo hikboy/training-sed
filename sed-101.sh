@@ -59,4 +59,31 @@
 #sed -n '/qwc/,/ttt/ w xfile' $1
 #sed -n '/ljb/,+2 w xfile' $1
 
+#sed 's/ljb/lkx' $1
+#sed '/xy/s/ljb/lkx' $1
+#sed 's/a/A/' $1
+#sed 's/a/A/g' $1
+#sed 's/a/A/2' $1
+#sed -n 's/a/A/p' $1
+#sed -n 's/a/A/w xfile' $1
+#sed 's/john/johnny/' $1
+#sed 's/john/johnny/i' $1
+
+#sed 's/^/ls -l /' $1
+#sed 's/^/ls -l /e' $1
+#sed -n 's/Manager/Director/gipw output.txt' $1
+
+#sed 's/\/usr\/local\/bin/\/usr\/bin/' $1
+#You can use any character as subtitution delimiter 
+#sed 's|/usr/local/bin|/usr/bin|' $1
+#sed 's@/usr/local/bin@/usr/bin@' $1
+
+#sed '{
+#s/Developer/IT Manager/
+#s/Manager/Director/
+#}' $1
+
+#sed 's/^[0-9][0-9][0-9]/(&)/g' $1
+#sed 's/^.*/<&>/' $1
+#sed 's/\([^,]*\).*/\1/g' $1
 
