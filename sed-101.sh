@@ -7,6 +7,9 @@
 #sed [options] -f {sed-command-in-a-file} {input-file}
 #sed [options] -e {sed-command-1} -e {sed-command-2} {input-file}
 #sed '[address-range|pattern-range]' s/original-string/replacement-string/[subtitute-flags]' input-file
+#sed '[address] a the-line-to-append' input-file
+#sed '[address] i the-line-to-insert' input-file
+#sed '[address] c the-line-to-insert' input-file
 
 #sed [options] '{
 #    sed-command-1
@@ -113,4 +116,111 @@
 #sed -n '/log: \?/ p' $1
 #sed -n '/127\.0\.0\.1/ p' $1
 
-sed -n '/[234]/ p' $1
+#sed -n '/[234]/ p' $1
+#sed -n '/[2-4]/ p' $1
+#sed -n '/101\|102/ p' $1
+#sed -n '/[2-3]\|105/ p' $1
+
+#sed -n '/[0-9]/ p' $1
+#sed -n '/^[0-9]\{5\}$/ p' $1
+#sed -n '/^[0-9]\{3,5\}$/ p' $1
+
+#sed -n '/\bthe\b/ p' $1
+#sed -n '/\(the\)\1/ p' $1
+#sed 's/..$/, Not Defined/' $1
+#sed 's/Manager.*//' $1
+#sed -e 's/#.*// ; /^$/ d' $1
+#sed -e 's/<[^>]*>//g' $1
+
+#sed -e 's/#.*//' -e '/^$/ d' $1
+#sed -e '/^#.*/ d' $1
+#sed 's/.$//' $1
+
+#sed -i 's/John/Johnny/' $1
+#sed -ibak 's/John/Johnny/' $1
+#sed --in-place=bak 's/John/Johnny/' $1
+
+#sed '2 a 203, Jack Johnson, Engineer' $1
+#sed '$ a 203, Jack Johnson, Engineer' $1
+
+#sed '/Jason/a\
+#203,Jack Johnson,Engineer\
+#204,Mark Smith,Sales Engineer' $1
+
+#sed '2 i 203,Jack Johnson,Engineer' $1 
+#sed '$ i 108,Jack Johnson,Engineer' $1
+
+#sed '/Jason/i\
+#203,Jack Johnson,Engineer\
+#204,Mark Smith,Sales Engineer' $1
+
+#sed '2 c 202,Jack Johnson,Engineer' $1
+
+#sed '/Raj/c\
+#203,Jack Johnson,Engineer\
+#204,Mark Smith,Sales Engineer' $1
+
+#sed '/Jason/ {
+#a\
+#    204,Jack Johnson,Engineer
+#i\
+#    202,Mark Smith,Sales Engineer
+#c\
+#    203,Joe Mason,Sysadmin
+#}' $1
+
+#sed -n l $1
+#sed -n 'l 20' $1
+
+#sed = $1
+#sed '1,3 =' $1
+#sed '/Jane/ =' $1
+
+#sed -n '1,3 =' $1
+#sed -n '/Jane/ =' $1
+#sed -n '$ =' $1
+#sed 'y/abcde/ABCDE/' $1
+#sed -n '/root/ p' $1 $2
+#sed 'q' $1
+#sed '5 q' $1
+#sed '/Manager/ q' $1
+#sed '$ r log.txt' $1
+#sed '/Jane/ r log.txt' $1
+#sed -n n $1
+
+#cat $1
+#sed 's/JUNK/&/p' $1
+#sed -n 'p' $1
+#sed 'n' $1 
+#sed 'N' $1
+
+#grep Jane $1
+#sed -n 's/Jane/&/p' $1
+#sed -n '/Jane/ p' $1
+
+#grep -v Jane $1
+#sed -n '/Jane/ !p' $1
+
+#head -10 $1
+#sed '11, $ d' $1
+#sed -n '1,10 p' $1
+#sed '10, q' $1
+
+#sed -n 'p' employee.txt
+#sed --quiet 'p' employee.txt
+#sed --silent 'p' employee.txt
+
+#sed -ibak -c 's/John/Johnny/' employee.txt
+#sed --in-place=bak --copy 's/John/Johnny/' employee.txt
+#sed -n -l 20 'l' employee.txt
+#sed -n --line-length=20 employee.txt
+#sed -n -e 'x;n' -e '/Manager/{x;p}' $1
+#sed -n -e '/Manager/!h' -e '/Manager/{x;p}' $1
+#sed -n -e '/Manager/!h' -e '/Manager/{H;x;p}' $1
+#sed -n -e '/Manager/!h' -e '/Manager/{H;x;s/\n/:/;p}' $1
+#sed -n -e '/Manager/!h' -e '/Manager/{g;p}' $1
+#sed -n -e '/Manager/!h' -e '/Manager/{x;G;s/\n/:/;p}' $1
+#sed -e '{N;s/\n/:/}' $1
+#sed -e '=' $1 | sed -e '{N; s/\n/ /}'
+#sed -n -e 'N' -e '/Manager/P' $1
+#sed -e '/@/{N;/@.*@/{s/@.*@//;P;D}}' $1
